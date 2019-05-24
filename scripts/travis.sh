@@ -16,6 +16,7 @@ if [ "$1" = "misc" ]; then
         server/tests/misc-endpoints.ts \
         server/tests/helpers/index.ts
 elif [ "$1" = "cli" ]; then
+    npm run setup:cli
     npm run build:server
     mocha --timeout 5000 --exit --require ts-node/register --bail server/tests/cli/index.ts
 elif [ "$1" = "api-1" ]; then
@@ -28,7 +29,6 @@ elif [ "$1" = "api-3" ]; then
     npm run build:server
     sh ./server/tests/api/travis-3.sh 2
 elif [ "$1" = "api-4" ]; then
-    npm run setup:cli
     npm run build-server
     sh ./server/tests/api/travis-4.sh 2
 elif [ "$1" = "lint" ]; then
